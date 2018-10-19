@@ -1,0 +1,36 @@
+{
+  "settings": {
+    "number_of_shards" : 1,
+    "number_of_replicas" : 0,
+
+    "analysis": {
+      "filter": {
+        "pl_PL": {
+          "type": "hunspell",
+          "language": "pl_PL"
+        },
+        "polish_stop": {
+          "type": "stop",
+          "stopwords_path": "stopwords/pl_PL.txt"
+        }
+      },
+      "analyzer": {
+        "custom_analyzer": {
+          "tokenizer": "standard",
+          "filter": [ "lowercase", "polish_stop", "pl_PL" ],
+          "char_filter":  [ "html_strip" ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "_doc": {
+      "properties": {
+        "my_field": {
+          "type": "text",
+          "analyzer": "custom_analyzer"
+        }
+      }
+    }
+  }
+}

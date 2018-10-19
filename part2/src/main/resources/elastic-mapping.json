@@ -1,0 +1,15 @@
+{
+  "document": {
+    "properties": {
+      "file": { "type": "text", "fielddata": true },
+      "title": { "type": "text", "fielddata": true },
+      "header": { "type": "text", "fielddata": true },
+      "content_analyzed": { "type": "text", "fielddata": true, "analyzer": "polish_analyzer" },
+      "content_standard": { "type": "text", "fielddata": true, "analyzer": "standard" },
+      "date": {
+        "type": "date",
+        "format": "strict_date_optional_time||epoch_millis"
+      }
+    }
+  }
+}

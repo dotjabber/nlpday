@@ -1,0 +1,59 @@
+{
+  "settings": {
+    "number_of_shards" : 1,
+    "number_of_replicas" : 0,
+
+    "analysis": {
+      "char_filter": {
+        "custom_filter": {
+          "type": "mapping",
+          "mappings": [
+            "a => e",
+            "b => f",
+            "c => g",
+            "d => h",
+            "e => i",
+            "f => j",
+            "g => k",
+            "h => l",
+            "i => m",
+            "j => n",
+            "k => o",
+            "l => p",
+            "m => q",
+            "n => r",
+            "o => s",
+            "p => t",
+            "q => u",
+            "r => v",
+            "s => w",
+            "t => x",
+            "u => y",
+            "v => z",
+            "w => a",
+            "x => b",
+            "y => c",
+            "z => d"
+          ]
+        }
+      },
+      "analyzer": {
+        "custom_analyzer": {
+          "tokenizer": "standard",
+          "filter": [ "lowercase" ],
+          "char_filter":  [ "html_strip", "custom_filter" ]
+        }
+      }
+    }
+  },
+  "mappings": {
+    "_doc": {
+      "properties": {
+        "my_field": {
+          "type": "text",
+          "analyzer": "custom_analyzer"
+        }
+      }
+    }
+  }
+}
